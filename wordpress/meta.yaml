@@ -1,0 +1,9 @@
+name: Wordpress
+description: "The WordPress rich content management system can utilize plugins, widgets, and themes"
+logo: https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/wordpress.svg
+category: Blogging
+source: https://github.com/WordPress/WordPress
+contributors:
+  - "@nexttonext"
+versions:
+  latest: deploy.yaml
