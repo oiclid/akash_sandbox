@@ -1,0 +1,9 @@
+name: MongoDB
+description: "MySQL is a widely used, open-source relational database management system (RDBMS)"
+logo: https://unpkg.com/simple-icons@4.2.0/icons/mongodb.svg
+category: Databases
+source: https://github.com/mysql/mysql-server
+contributors:
+  - "davaymne"
+versions:
+  latest: deploy.yaml
