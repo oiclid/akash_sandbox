@@ -4,6 +4,6 @@ logo: https://cdn.jsdelivr.net/npm/simple-icons@v4/icons/wordpress.svg
 category: Blogging
 source: https://github.com/WordPress/WordPress
 contributors:
-  - "@nexttonext"
+  - "nexttonext"
 versions:
   latest: deploy.yaml
