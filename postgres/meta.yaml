@@ -1,8 +1,8 @@
 name: Postgres
-description: "MySQL is a widely used, open-source relational database management system (RDBMS)"
+description: "PostgreSQL is a powerful, open source object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance"
 logo: https://unpkg.com/simple-icons@4.2.0/icons/postgresql.svg
 category: Databases
-source: https://github.com/mysql/mysql-server
+source: https://github.com/postgres/postgres
 contributors:
   - "davaymne"
 versions:

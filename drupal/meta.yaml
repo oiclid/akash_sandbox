@@ -1,9 +1,9 @@
 name: Drupal
-description: "MySQL is a widely used, open-source relational database management system (RDBMS)"
+description: "Drupal is an open source content management platform supporting a variety of websites ranging from personal weblogs to large community-driven websites"
 logo: https://unpkg.com/simple-icons@4.2.0/icons/drupal.svg
 category: Content Management
-source: https://github.com/mysql/mysql-server
+source: https://github.com/drupal/drupal
 contributors:
-  - "davaymne"
+  - "orsvet"
 versions:
   latest: deploy.yaml
