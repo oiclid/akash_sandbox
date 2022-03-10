@@ -1,0 +1,37 @@
+---
+version: "2.0"
+
+services:
+  geekbench:
+    image: cryptoandcoffee/akash-geekbench
+    expose:
+      - port: 8080
+        as: 80
+        proto: tcp
+        to:
+          - global: true
+    env:
+      - VERSION="5" #Choose between Geekbench version 4 or 5
+      - email= #Optional
+      - key= #Optional
+profiles:
+  compute:
+    geekbench:
+      resources:
+        cpu:
+          units: 1.0
+        memory:
+          size: 1Gi
+        storage:
+          size: 1Gi
+  placement:
+    akash:
+      pricing:
+        geekbench:
+          denom: uakt
+          amount: 10000
+deployment:
+  geekbench:
+    akash:
+      profile: geekbench
+      count: 1
