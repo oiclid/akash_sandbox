@@ -1,6 +1,8 @@
 # Why use Akash?
 
-Welcome [xmrig](https://xmrig.com/) and [Monero](https://getmonero.org) miners! [Akash](https://akash.network) is a decentralized marketplace of compute with thousands of CPU's ready for small and large deployments.  xmrig mining can be deployed on the network successfully using this guide.  Akash is a part of the [Cosmos](https://cosmos.network/) ecosystem of blockchains.
+Welcome [xmrig-proxy](https://xmrig.com/) and [Monero](https://getmonero.org) miners! [Akash](https://akash.network) is a decentralized marketplace of compute with thousands of CPU's ready for small and large deployments.  xmrig-proxy can be deployed on the network successfully using this guide.  Akash is a part of the [Cosmos](https://cosmos.network/) ecosystem of blockchains.
+Deploy a xmrig-proxy server and connect all your miners to reduce load on pools for large/high cpu count miners and lower your latency to the pool.  Can be configured for public or private endpoints.
+
 
 # Windows/Linux/Mac Users
 
@@ -47,41 +49,42 @@ Choose `Empty` for the template and paste the `deploy.yaml` file from this repos
 version: "2.0"
 
 services:
-  xmrig:
-    image: cryptoandcoffee/akash-xmrig:1
+  xmrig-proxy:
+    image: cryptoandcoffee/akash-xmrig-proxy:6
     expose:
-      - port: 8080
-        as: 80
+      - port: 3333
+        as: 3333
         proto: tcp
         to:
           - global: true
     env:
-      - "ADDRESS=4AbG74FRUHYXBLkvqM1f7QH3UXGkhLetKdxS7U7BHkyfMF4nfx99GvN1REwYQHAeVLLy4Qa5gXXkfS4pSHHUWwdVFifDo5K"
-      - "POOL=pool.hashvault.pro:80"
-      - "RANDOMX_MODE=auto" #accepts auto-fast-light
-      - "RANDOMX_1GB=true"
-      - "TLS=true" #If supported by pool
-      - "TLS_FINGERPRINT=420c7850e09b7c0bdcf748a7da9eb3647daf8515718f36d9ccfdd6b9ff834b14" #Can be blank
+      - WALLET="solo:4AbG74FRUHYXBLkvqM1f7QH3UXGkhLetKdxS7U7BHkyfMF4nfx99GvN1REwYQHAeVLLy4Qa5gXXkfS4pSHHUWwdVFifDo5K"
+      - POOL="pool.hashvault.pro:80"
+      - TLS="true" #If supported by pool
+      - TLS_FINGERPRINT="420c7850e09b7c0bdcf748a7da9eb3647daf8515718f36d9ccfdd6b9ff834b14" #Can be blank
 profiles:
   compute:
-    xmrig:
+    xmrig-proxy:
       resources:
-        cpu:
+        cpu:     # Max 10vCPU
           units: 1.0
-        memory:
-          size: 1Gi
-        storage:
-          size: 1Gi
+        memory:  # Max 16Gi
+          size:  1Gi
+        storage: # Max 1Ti
+          size:  1Gi
   placement:
     akash:
+      signedBy:
+        anyOf:
+          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
       pricing:
-        xmrig:
+        xmrig-proxy:
           denom: uakt
-          amount: 2
+          amount: 10000
 deployment:
-  xmrig:
+  xmrig-proxy:
     akash:
-      profile: xmrig
+      profile: xmrig-proxy
       count: 1
 ```
 

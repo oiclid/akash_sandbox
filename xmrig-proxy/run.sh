@@ -64,16 +64,9 @@ TLS=true
 TLS_FINGERPRINT=
 fi
 
-if [[ ${RANDOMX_1GB} == "true" ]];
-then
-RANDOMX_1GB_PAGES="--randomx-1gb-pages"
-else
-RANDOMX_1GB_PAGES=
-fi
-
 echo "Using POOL: ${POOL} WALLET: ${WALLET}  WORKER: ${WORKER} TLS: ${TLS} TLS_FINGERPRINT: ${TLS_FINGERPRINT}"
 
-if [[ ${TLS_FINGERPRINT} != "" ]]; then
+if [[ ${TLS_FINGERPRINT} != "" && ${TLS_FINGERPRINT} == "true" ]]; then
 xmrig-proxy -a ${ALGO} --url ${POOL} --user ${WALLET} --rig-id ${WORKER} --pass ${WORKER} --tls --tls-fingerprint ${TLS_FINGERPRINT} --http-host 0.0.0.0 --http-port 8080
 elif [[ ${TLS_FINGERPRINT} == "" && ${TLS} == "true" ]]; then
 xmrig-proxy -a ${ALGO} --url ${POOL} --user ${WALLET} --rig-id ${WORKER} --pass ${WORKER} --tls --http-host 0.0.0.0 --http-port 8080
