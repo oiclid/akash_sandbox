@@ -29,7 +29,6 @@ Update the requested amount of Memory
 
 memory:
   size:  3Gi
-
 ```
 
 ## Increase the deployment size on Akash
@@ -39,7 +38,6 @@ You can deploy more CPU or more replicas to mine faster.
 ```
 cpu:
   units: 1.0 # Max cpu units is 256
-
 ```
 
 Or increase the replica count from `count: 1` to `count: 2`.  The total cpu units requested can never exceed 512.
