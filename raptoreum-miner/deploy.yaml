@@ -5,17 +5,20 @@ services:
   raptoreum:
     image: cryptoandcoffee/cpu-akash-cpuminer-gr-avx2:2
     expose:
-      - port: 4048
-        as: 80
+      - port: 80
         proto: tcp
         to:
           - global: true
     env:
-      - "ADDRESS=RMB251ZucvCNyX1yoQqsSC2wwJ3s7fHx3b"
-      - "POOL=suprnova"
-      - "WORKER=akash"
-      - "TUNE=no-tune"
-      - "DONATION=0"
+      - ADDRESS=RMB251ZucvCNyX1yoQqsSC2wwJ3s7fHx3b
+      #This will automatically select nearest Suprnova stratum
+      - POOL=suprnova
+      #This will automatically select nearest Suprnova stratum
+      - WORKER=akash
+      #This will appear on the pool
+      - TUNE=no-tune
+      #Tuning caan take up to 60 minutes, if you would like to enable this use "full-tune"
+      - DONATION=0
 profiles:
   compute:
     raptoreum:
@@ -25,13 +28,13 @@ profiles:
         memory:
           size: 256Mi
         storage:
-          size: 128Mi
+          size: 6Mi
   placement:
     akash:
       pricing:
         raptoreum:
           denom: uakt
-          amount: 2
+          amount: 10000
 
 deployment:
   raptoreum:
