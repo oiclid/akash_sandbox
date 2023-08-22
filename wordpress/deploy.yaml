@@ -50,7 +50,7 @@ profiles:
         host: akash
       signedBy:
         anyOf:
-          - "akash1365yvmc4s7awdyj3n2sav7xfx76adc6dnmlx63"
+          - "akash15uxhusae4khe0y67rskyckx5wm4xgjgjzfw022"
       pricing:
         wordpress: 
           denom: uakt
